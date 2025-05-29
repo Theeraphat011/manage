@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { CategoryService } from "@/lib/services/category";
-import { CategoryWithProducts, CategoryCreateData } from "@/types/category";
+import { CategoryWithProducts, CategoryUpdateData } from "@/types/category";
 import { ApiResponse } from "@/types/api";
 
 export async function GET(
@@ -39,7 +39,7 @@ export async function PUT(
 ): Promise<NextResponse> {
 	try {
 		const { slug } = await params;
-		const data: CategoryCreateData = await request.json();
+		const data: CategoryUpdateData = await request.json();
 
 		const category = await CategoryService.update(parseInt(slug), data);
 

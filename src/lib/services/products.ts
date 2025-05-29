@@ -1,5 +1,5 @@
 import prisma from "../prisma";
-import { ProductCreateData, ProductWithCategory } from "@/types/product";
+import { ProductCreateData, ProductWithCategory, ProductUpdateData } from "@/types/product";
 
 export class ProductService {
 	static async create(data: ProductCreateData): Promise<ProductWithCategory> {
@@ -28,7 +28,7 @@ export class ProductService {
 		});
 	}
 
-	static async update(id: number, data: ProductCreateData): Promise<ProductWithCategory | null> {
+	static async update(id: number, data: ProductUpdateData): Promise<ProductWithCategory | null> {
 		return await prisma.product.update({
 			where: { id },
 			data,
