@@ -46,4 +46,11 @@ export class ProductService {
 			},
 		});
 	}
+
+	static async updateStock(productId: number, newQuantity: number) {
+		return await prisma.product.update({
+			where: { id: productId },
+			data: { quantity: newQuantity },
+		});
+	}
 }
